@@ -78,10 +78,12 @@
                                 <table class="table" height="30">
                                     <caption>Unique Users </caption>
                                     <tr>
-                                        <th ng-repeat="field in Object.keys(users[0])">
-                                            {{field}}
+                                        <th>
+                                           UID
                                         </th>
-                                       
+                                       <th>
+                                           Count
+                                       </th>
                                     </tr>
                                     <tr ng-repeat="uid in users">
                                         <td>
