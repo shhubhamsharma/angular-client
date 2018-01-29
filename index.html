@@ -30,8 +30,10 @@
     <div ng-controller="mainCtrl" class="container-fluid padding-class">
         <div class="row">
                 <form class="form-group" class="col-sm-7">
+                    <label>
+                        Select Platform
+                    </label>
                         <select class="form-control" ng-model="selectedItem" ng-change="update(selectedItem)">
-                                <option selected disabled hidden>Select Platform</option>
                             <option ng-repeat="item in list">
                                 {{item.platform}}
                             </option>
