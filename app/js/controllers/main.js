@@ -30,7 +30,6 @@ $scope.seErr=true;
   $scope.update=function(platform){
     $scope.nfError=false;
     $scope.seErr=false;
-      console.log(platform.replace(/\s/g,''))
     var payload={
         data:{
             platform:platform.replace(/\s/g,'')
@@ -39,6 +38,7 @@ $scope.seErr=true;
 
     $factories.getData(payload).then(
         function success(response){
+            // $scope.length=0;
             if (response != undefined && response != null && response != "") {
                 if (
                   response.data != undefined &&
@@ -53,17 +53,12 @@ $scope.seErr=true;
                       $scope.fields=Object.keys(response.data.data[0]).filter(function(item){
                           return item!='id';
                       });
+                      $scope.length =[];
                         $scope.data=response.data.data;
-                        $scope.$watch('data',function(oldVal,newVal){
-                            $scope.data=newVal;
-                            $scope.length = [
+                        $scope.length = [
                                 [$scope.data.length]
                               ];
-                        })
-                        $scope.length = [
-                            [$scope.data.length]
-                          ];
-                        console.log($scope.length)
+                        
                   }
                   else{
                     $scope.nfError=true;
@@ -100,10 +95,7 @@ if(!$scope.nfError && !$scope.seErr){
                             
                             $scope.datapie.push(element.fragcount);
                             $scope.labelspie.push(element.uid);
-                        });
-                        console.log($scope.datapie)
-                           console.log( $scope.labelspie)
-                        
+                        });                        
                   }
                 }
               }                    
