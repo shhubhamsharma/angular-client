@@ -1,0 +1,6 @@
+---
+applications:
+- name: task-sav
+  memory: 64MB
+  disk_quota: 64MB
+  buildpack: staticfile_buildpack
