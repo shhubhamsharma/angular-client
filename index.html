@@ -1,0 +1,111 @@
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#317EFB"/>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
+        <style>
+        body,.content{
+            max-height: 100%;
+            overflow-y: true;
+        }
+        </style>
+    </head>
+    
+    <body ng-cloak ng-app="myapp" ng-cloak>
+    <div ng-controller="mainCtrl">
+        <form class="form-group">
+        <select class="form-control" ng-model="selectedItem" ng-change="update(selectedItem)">
+                <option selected>Select Platform</option>
+            <option ng-repeat="item in list">
+                {{item.platform}}
+            </option>
+        </select>
+        </form>
+        <div class="row" ng-if="!seErr && !nfError" class="container-fluid content">
+                <div class="col-sm-8">
+                   <div class="row">
+                       <div class="col-sm-12">
+                            <caption>Total  </caption>
+                            <!-- <canvas id="bar" class="chart chart-bar" 
+                            chart-data="length" chart-labels="labels"> chart-series="series"
+                       </canvas> -->
+                       <!-- <canvas id="bar" class="chart chart-bar" chart-data="length" chart-labels="labels">here </canvas> -->
+                       <canvas id="bar" class="chart chart-bar" style="max-width:40%;max-height:20%;"
+                       chart-data="length" chart-labels="labelsBar"> Total
+                    </canvas>
+                       </div>
+                   </div>
+                   
+                   <div class="row" style="max-height:33%;">
+                        <div class="col-sm-12">
+                                <caption>Share of UIDs of selected platform  </caption>                                
+                        <canvas id="bar" class="chart chart-bar" style="max-width:100%;"
+                        chart-data="datapie" chart-labels="labelspie">
+                      </canvas> 
+                        </div>
+                   </div>
+                   <div class="row">
+                        <div class="col-sm-12">
+                        <table class="table">
+                            <caption>Unique Users </caption>
+                            <tr>
+                                <th ng-repeat="field in Object.keys(users[0])">
+                                    {{field}}
+                                </th>
+                               
+                            </tr>
+                            <tr ng-repeat="uid in users">
+                                <td>
+                                    {{uid.uid}}
+                                </td>
+                                <td>
+                                    {{uid.ucount}}
+                                </td>
+
+                            </tr>
+                        </table>
+                        </div>
+                   </div>
+
+                </div>
+                <div class="col-sm-4">
+                        <table class="table">
+                                <caption>All Data</caption>                                
+                                <thead>
+                                  <tr>
+                                    <th ng-repeat="field in fields">
+                                        {{field}}
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr ng-repeat="row in data">
+                                    <td>{{row.platform}}</td>
+                                    <td>{{row.uid}}</td>
+                                  </tr>                                
+                                </tbody>
+                              </table>
+                </div>
+        </div>
+        <div ng-if="nfError && !seErr">
+            No Records found
+        </div>
+        <div ng-if="seErr && !nfError">
+                Something is wrong!
+            </div>
+    </div>
+    <script type="text/javascript" src="app/js/libs/jquery/jquery-1.12.3.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        
+    <script type="text/javascript" src="app/js/libs/angular.js"></script>
+    <script type="text/javascript" src="app/js/libs/angular-ui-router.js"></script>
+    <script src="node_modules/angular-chart.js/node_modules/chart.js/dist/Chart.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <!-- <script src="scripts/Chart_Module/tc-angular-chartjs.min.js"></script> -->
+    <script type="text/javascript" src="app/js/app.js"></script>
+    <script type="text/javascript" src="app/js/factory.js"></script>
+    <script type="text/javascript" src="app/js/controllers/main.js"></script>
+    </body>
+    </html>
