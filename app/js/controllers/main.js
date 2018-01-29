@@ -37,6 +37,7 @@ $scope.seErr=false;
             platform:platform.replace(/\s/g,'')
         }
     };
+
     $factories.getData(payload).then(
         function success(response){
             if (response != undefined && response != null && response != "") {
@@ -136,4 +137,24 @@ if(!$scope.nfError && !$scope.seErr){
       }
 }
 
+$scope.downloadReport = function() {   
+    var filename = "task.xlsx"
+
+    alasql('SELECT uid,platform INTO xlsx("' + filename + '",{headers:true}) FROM ?', [$scope.data]);
+}
+$scope.downloadReportPDF=function(){
+    var doc = new jsPDF();
+    var col =Object.keys($scope.data[0]).filter(function(element){
+        return element!='id' && element!='$$hashKey';
+    });
+    var rows = [];
+
+    for(var key in $scope.data){
+        if(key!='id' && key!='$$hasKey')
+        var temp = [JSON.stringify($scope.data[key]['uid']), $scope.data[key]['platform']];
+        rows.push(temp);
+    }
+    doc.autoTable(col, rows);    
+    doc.save('task.pdf')
+}
 });
