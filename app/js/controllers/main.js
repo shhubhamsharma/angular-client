@@ -18,10 +18,9 @@ $scope.seErr=false;
           }
         }
       }
-      console.log($scope.selectedItem);
     },
     function error(error) {
-      console.log(error);
+$scope.seErr=true;
     }
   );
   $scope.labelsBar = ['Total',];
