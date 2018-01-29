@@ -29,7 +29,8 @@ $scope.seErr=false;
 
   
   $scope.update=function(platform){
-    $scope.nfError && !$scope.seErr=false;
+    $scope.nfError=false;
+    $scope.seErr=false;
       console.log(platform.replace(/\s/g,''))
     var payload={
         data:{
