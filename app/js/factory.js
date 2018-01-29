@@ -1,6 +1,6 @@
 myapp.factory('$factories',function($http){
     // var url="http://localhost:3100/";
-    var url="http://testapppython.cfapps.io/"
+    var url="https://testapppython.cfapps.io/"
     var factory={};
     factory.getPlatform=function(){
         return $http(
