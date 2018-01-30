@@ -51,13 +51,9 @@
         <div class="row" ng-if="!seErr && !nfError" class="container-fluid content" >
                 <div class="col-sm-6 cotent-l" >
                    <div class="row card">
-                       <div class="col-sm-12">
+                       <div class="col-sm-6">
                             <caption>Total  </caption>
-                            <!-- <canvas id="bar" class="chart chart-bar" 
-                            chart-data="length" chart-labels="labels"> chart-series="series"
-                       </canvas> -->
-                       <!-- <canvas id="bar" class="chart chart-bar" chart-data="length" chart-labels="labels">here </canvas> -->
-                       <canvas id="bar" class="chart chart-bar" style="max-width:40%;max-height:20%;"
+                            <canvas id="bar" class="chart chart-bar" style="max-width:40%;max-height:20%;"
                        chart-data="length" chart-labels="labelsBar"> Total
                     </canvas>
                        </div>
@@ -66,15 +62,24 @@
                    <div class="row card" style="max-height:20%;">
                         <div class="col-sm-12">
                                 <caption>Share of UIDs of selected platform  </caption>                                
-                        <canvas id="bar" class="chart chart-bar" style="max-width:100%;"
+                        <canvas id="bar" class="chart chart-bar" style="max-width:60%; max-height:60%;"
                         chart-data="datapie" chart-labels="labelspie">
                       </canvas> 
                         </div>
                    </div>
-                 
+                   <div class="row card" style="max-height:20%;">
+                        <div class="col-sm-12">
+                                <caption>Unique Users :{{doData.length}} </caption>                                
+                                <canvas id="pie" class="chart chart-pie"
+                                style="max-width:50%;max-height:50%;"
+                                chart-data="doData" chart-labels="doLabels"> 
+                              </canvas> 
+                        </div>
+                   </div>
                 </div>
                 <div class="col-sm-3 cotent-r" style="height:500px !important; overflow-y: scroll;">
-                                <table class="table" height="30">
+                        
+                                <table class="table">
                                     <caption>Unique Users </caption>
                                     <tr>
                                         <th>

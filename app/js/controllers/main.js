@@ -117,6 +117,16 @@ if(!$scope.nfError && !$scope.seErr){
                     response.data.data != ""
                   ) {
                         $scope.users=response.data.data;
+                    $scope.doLabels=[];
+                    $scope.doData=[];
+                    console.log($scope.users)
+                        $scope.users.forEach(function(element){
+                            console.log(element)
+                            $scope.doLabels.push(element.uid);
+                            $scope.doData.push(element.ucount)
+                        });
+                        $scope.doLength=[$scope.doLabels.length]
+                        console.log($scope.doData)
                   }
                 }
               }                    
